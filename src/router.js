@@ -3,7 +3,7 @@ const router = [
   {
     path: '/HelloWorld',
     meta: {
-        title: '商品列表'
+        title: '首页'
     },
     component: (resolve) => require(['./components/HelloWorld.vue'], resolve)
   },
@@ -13,6 +13,13 @@ const router = [
         title: '列表'
     },
     component: (resolve) => require(['./components/list.vue'], resolve)
+  }, 
+  {
+    path: '/echarts',
+    meta: {
+        title: '列表'
+    },
+    component: (resolve) => require(['./components/echarts.vue'], resolve)
   },
   {
     path: '*',

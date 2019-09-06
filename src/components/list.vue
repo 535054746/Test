@@ -22,8 +22,8 @@ export default {
       timer: null
     }
   },
-  mounted(){
-    console.log(window.location.search.slice(1))
+  mounted() {
+    // console.log(window.location.search.slice(1))
   },
   methods: {
     Sign() {

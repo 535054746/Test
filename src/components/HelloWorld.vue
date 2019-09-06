@@ -24,6 +24,9 @@
     <div>{{arr}}</div>
     <zcom :text = text style="margin-bottom: 50px; margin-top: 50px"/>
     <router-link to="/list?a=1">列表</router-link>
+    <div style="margin-top: 20px">
+      <router-link to="/echarts">echarts图表</router-link>
+    </div>
   </div>
 </template>
 <script>
@@ -63,7 +66,7 @@ export default {
   },
   mounted() {
     this.listArr= [...this.arr.filter(item => item.a===4),...this.arr.filter(item => item.a===2)]
-    console.log(localStorage)
+    // console.log(localStorage)
   },
   methods: {
     btn() {
@@ -71,10 +74,9 @@ export default {
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
-        .then(_ => {
+        .then(()=> {
           done();
-        })
-        .catch(_ => {});
+        }).catch(()=> {});
     }
   }
 }
