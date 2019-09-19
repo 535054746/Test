@@ -1,6 +1,6 @@
 <template>
   <div>
-   <div id="myChart" :style="{width: '300px', height: '300px'}"></div>
+   <div id="myChart" :style="{width: '400px', height: '300px'}"></div>
    <div id="myChart1" :style="{width: '300px', height: '300px'}"></div>
    <div id="echerts" :style="{width: '300px', height: '300px'}"></div>
   </div>
@@ -10,7 +10,8 @@
 export default {
   data() {
     return {
-      data: [5, 20, 36, 10, 10, 20]
+      data: [5, 20, 36, 10, 10, 20],
+      text: '在Vue中使用echarts'
     }
   },
   mounted() {
@@ -21,7 +22,7 @@ export default {
     drawList() {
       let myChart = this.$echarts.init(document.getElementById('myChart'))
       myChart.setOption({
-        title: { text: '在Vue中使用echarts' },
+        title: { text: this.text},
         tooltip: {},
         xAxis: {
           data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]

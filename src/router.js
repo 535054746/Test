@@ -22,6 +22,13 @@ const router = [
     component: (resolve) => require(['./components/echarts.vue'], resolve)
   },
   {
+    path: '/router',
+    meta: {
+        title: '路由链接'
+    },
+    component: (resolve) => require(['./components/router.vue'], resolve)
+  },
+  {
     path: '*',
     redirect: '/HelloWorld'
   }

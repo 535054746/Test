@@ -23,9 +23,20 @@
     <div>{{listArr}}</div>
     <div>{{arr}}</div>
     <zcom :text = text style="margin-bottom: 50px; margin-top: 50px"/>
-    <router-link to="/list?a=1">列表</router-link>
+    <router-link to="/list?a=1">登录</router-link>
     <div style="margin-top: 20px">
       <router-link to="/echarts">echarts图表</router-link>
+    </div>
+    <br>
+    <div>
+      <div class="f_flex">
+        <div class="flex">{{count}} -- {{list}}</div>
+        <div class="flex">{{$store.state.count}}</div>
+      </div>
+      <div @click="countAdd" class="add">点击</div>
+    </div>
+    <div>
+      <button @click="Jsrouter">跳转</button>
     </div>
   </div>
 </template>
@@ -69,6 +80,12 @@ export default {
     // console.log(localStorage)
   },
   methods: {
+    Jsrouter() {
+      this.$router.push('/router?a=10')
+    },
+    countAdd() {
+     this.$store.commit('countAdd')
+    },
     btn() {
       this.dialogVisible = true
     },
@@ -78,11 +95,46 @@ export default {
           done();
         }).catch(()=> {});
     }
+  },
+  computed: {
+    count() {
+      return this.$store.state.count;
+    },
+    list() {
+      return this.$store.getters.list
+    }
   }
 }
 </script>
 <style scoped>
+.add{
+  width:80px;
+  height: 30px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  margin: auto;
+}
  .box-card{
    width: 400px
+ }
+ .f_flex{
+   display: flex;
+   width: 1000px;
+   height: 300px;
+   border: 1px solid;
+   border-radius: 4px;
+   justify-content: center;
+   align-items: center;
+   /* align-content: space-between */
+ }
+ .flex{ 
+   border: 1px solid;
+   width: 100px;
+   height: 100px;
+   flex-grow: 1;
+   margin: 10px;
  }
 </style>
