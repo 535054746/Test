@@ -2,6 +2,11 @@
 <template>
   <div>
     {{text}}
+    <div>
+      <div>提示</div>
+      <slot name="s1"></slot>
+      <div>确定</div>
+    </div>
   </div>
 </template>
 <script>

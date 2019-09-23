@@ -22,7 +22,11 @@
     </el-dialog>
     <div>{{listArr}}</div>
     <div>{{arr}}</div>
-    <zcom :text = text style="margin-bottom: 50px; margin-top: 50px"/>
+  
+    <zcom :text = text style="margin-bottom: 50px; margin-top: 50px">
+      <div slot="s1">1111</div>
+    </zcom>
+
     <router-link to="/list?a=1">登录</router-link>
     <div style="margin-top: 20px">
       <router-link to="/echarts">echarts图表</router-link>
@@ -38,16 +42,25 @@
     <div>
       <button @click="Jsrouter">跳转</button>
     </div>
+
+        <!-- slot用法 -->
+    <slotTest class="slotTest" v-if= 'tools' v-on:parasChange='getSub'>
+        <div slot="s2" class="slot">是否删除</div>
+    </slotTest>
+    <div @click="showTools">显示slotTools</div>
   </div>
 </template>
 <script>
 import zcom from '@/components/zcom'
+import slotTest from '@/components/slotTest'
 export default {
   components: {
-    zcom
+    zcom,
+    slotTest
   },
   data() {
     return {
+      tools: true,
       dialogVisible: false,
       text: '父组件的值',
       arr: [
@@ -72,7 +85,8 @@ export default {
           b: 5
         }
       ],
-      listArr: ''
+      listArr: '',
+      // myparam: ''
     }
   },
   mounted() {
@@ -80,6 +94,13 @@ export default {
     // console.log(localStorage)
   },
   methods: {
+    getSub(r) {
+      this.tools = r;
+      // console.log(this.myparam)
+    },
+    showTools(r) {
+      this.tools = r
+    },
     Jsrouter() {
       this.$router.push('/router?a=10')
     },
@@ -136,5 +157,14 @@ export default {
    height: 100px;
    flex-grow: 1;
    margin: 10px;
+ }
+ .slotTest{
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: fixed;
+   z-index: 999;
+   background: rgba(0, 0, 0, .3)
  }
 </style>
